@@ -1,0 +1,135 @@
+#### C Debuging (lab11) ##################
+# gcc is the tools from GNU project
+# whats the diffrance betwen static library , shared library ?
+# Compiler produce the exutable file (without errors) to run it on machine 
+gcc -c celsius.c   #(gcc macks compilation) to finds the errors or worning,
+# -c option give me output object file celsius.o
+# object file (celsius.o) contans intfo about code (objective file is not exucutable file)
+# whats the importmat of object file ? 
+# easyer to modify on project 
+# let I have project contans more than one sourse file , and i need to modify on it 
+# By using object file there have an info about sourse code i modify just on it not in all project and all sourses   
+# By using mack file you can use object file more than one at multiple projects
+nm celsius.o # list symbols from object 
+###########
+gcc celsius.c  # without -c (produce exucutable file without errors (with worning if exist)
+# outmaticly gcc give me --> a.out file (as defult)
+gcc celsius.c -o cel.out     # cel is the object file from C Code file
+nm cel.out    # list of symbols
+#############
+gcc -Wall file.c   # -W to display worning   ,    -Wall display all wornings 
+#######################################################################
+gcc -Wunused celsius_unused.c -o cel_unused.out  # display unused var
+################################
+gcc -Wuninitialized -O celsius_uninitilazed.c -o cel_uninitilazed.out   ### -O optimize souse code option
+######
+gcc optimize.c -o optimize.out
+gcc -Wuninitialized -O optimize.c -o optimize.out
+######################
+gcc option :
+-Wcomment
+-Wformat
+-Wimplicit
+-Wreturn-type
+-Wconversion
+-Wshadow
+######################################
+gcc object_1.c -o object_1.out   #  error massege
+###
+gcc -c object_1.c  # get worning but not error (the object file creation done)
+gcc -c object_2.c
+###########
+gcc object_1.o object_2.o -o object.out ## linker GNU mack link between two files 
+# mix to object as invoking from library in C programming
+##############
+gcc -Iinclude celsius_header.c -o celsius_header.out # display error on header file 
+# -I option check in directive instructs
+#####################################################################
+# macros as if statment but it is using to testing boot in machines 
+# -D option macros name
+############
+nano testmacros.c
+##############
+#include <stdio.h>
+int main (void)
+{
+#ifdef TEST
+printf ("Test mode\n");
+#endif
+printf ("Running...\n");
+return 0;
+}
+################
+gcc -Wall -DTEST testmacros.c -o testmacros
+./testmacros
+gcc -Wall testmacros.c -o testmacros
+./testmacros
+###################################################################################################
+######### lab 12+13  gdb + makefile ######################
+##### Debuging just at page 8 ####
+# the perpose of Debuging to determine the breaking point an error occures
+# monotring on memory and variables
+# for Debuging use -->  gdb  tool from GNU project 
+-g option for debuging  --> to get the necessary information about debuging 
+##########################################
+gcc -g gdb_1.c -o gdb_1 
+./gdb_1
+##########
+gdb gdb_1    # mack debuging on executable file   commands --> q (to quit) run (to start debuging)
+###########################
+gdb gdb_2 
+run gdb_2 hi arg2 arg3
+##################################
+#### Breakpoints  b #####
+# format --> b numberOfLine_orFunctionName 
+# b 4  # bracking point at line 4 (number of breakingpoint 1)
+# b 8  # bracking point at line 8 (number of breakingpoint 2)
+# next (to exucute next line (line by line execution))
+# c    (countinue debuging (End at new breakingpoint or finish the code))
+# disable 1    # 1 is the number of breakepoint
+# enable 1
+# delete 2   # (delete breakingpoint number 2) 
+#################
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

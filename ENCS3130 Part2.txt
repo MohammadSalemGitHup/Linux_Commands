@@ -1,0 +1,135 @@
+############# lab4 Shell script ##########
+#chmod +x shell1.sh  the same as  chmod 755 shell1.sh 
+######
+######### {} useg in var #######
+touch f1
+var=f1
+mv $var {$var}XXX
+ls
+###### $((expretion)) 
+######
+! /bin/bash
+datta_null_flag=''
+echo $data_null_flag
+#######
+##    $((expretion))  or expr ###
+var=3
+echo $((3+1))
+echo $((3*2))
+
+###########
+a=-1
+result=$((a >= 0 && a<=100))
+echo $result
+echo "####################"
+###########
+echo "Expr commands :"
+expr 1 + 2
+expr 1+2
+expr 10 + 20 / 2
+expr 5 \* 5       # this commands is error     expr 5 * 5
+################
+echo "#############"
+var2=1
+var2=$( expr $var2 + 1 )
+echo $var2
+######
+#########################
+x=moh
+echo '$x'    # '' is string
+echo \$x     # \  تلغي مفعول ال الاس دولار
+echo '\$x'
+echo "$x"    # "" is return value in var
+##################################################
+#### passing more than 9 arg to shell   put ${11}########
+#### $? varible (to check the states for program (to check exit states))  #######
+echo $?
+
+
+########################### lab5 #####################
+echo $$  #  $$ process id that i work on it 
+# $$ useg on to moving file to uniqu name for file (and useg to kill curunt process (to kill curent script runing) ) 
+touch f
+mv f f.$$_$$
+###############
+#test commands the same [  ]
+-n string    # -n string is not null
+-z string    # -z string is null
+####
+x=
+test -n "$x"  # the same as  [ -n "$x" ]
+echo $?
+test -z "$x"  # the same as  [ -z "$x" ]
+echo $?
+##############################
+## integer operations ###
+int1 -eq int2
+int1 -ne int2
+int1 -ge int2
+int1 -gt int2
+int1 -le int2
+int1 -lt int2
+###################
+#### files operation ####
+-d file    # file is a directory 
+-f file    # file
+-e file    # file exist 
+-s file    # file has nonzero length
+-r file    # file is readable
+-w file    # file is writable
+-x file    # file is executable
+-L file     # file is symbolinc ink
+###################################
+-a is the logical and   ,  -o is the logical or 
+####
+#  exit n  # n is the integer (exit states)
+exit 0  # finish with no errors
+exit 1  # finish with errors
+##############
+if statment 
+case statment --> case "$var"  in 1 ) ;; 2 ) ;; 3 ) *) ;; esac
+#######
+:   #null commands (do nothing)
+###################################################
+
+############### lab6 ###################
+for loops 
+while loop
+until loop
+
+break 2 # to exit from inner loop
+cotinue 3 # to exit from loop number 3
+##########################
+# read commands as a scanf in C code
+# printf to print spesific format digit signed number hexa octal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

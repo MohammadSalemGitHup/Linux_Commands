@@ -1,0 +1,298 @@
+########################################By Mohammad Salem
+
+#### lab1 commands ############
+
+### link (shourt cut) ####
+nano do.txt # mohsal 
+ln do.txt doH.txt    # Hard link  
+ln -s do.txt doS.txt #soft link
+ls -l 
+##########
+cp -r dir1 dir2   #copy dir1 to dir2 recursively
+mv f1 ..          # to transfer file to parent path 
+###########
+cat -n < f.sh          # display contant of script (with numerical) 
+## link is shourt cut ### in ls -l appers -l
+###########################################################################  
+#### lab2 commands ############    
+echo $SHELL         # type of shell 
+which ls            # path for commands
+nano sort.txt 
+# 
+1
+25
+12
+24
+14
+12
+13
+sort sort.txt 
+sort -n sort.txt
+uniq        # delete dublecat if the commands is sorted (تاتي بعد السورت)
+###### 
+grep "12" sort.txt
+grep "2" sort.txt
+###########
+nano grep.txt
+mohsal123
+LINUX13
+abo:sal:1234
+12
+25
+moh.pic
+1
+#####
+grep '[A-Z]' grep.txt    #to find capetal latters
+grep '[0-9]' grep.txt 
+grep '\.pic$' grep.txt      # $ in the last means string end of pic , \ to delete . effect (becuse . is the current path)
+#####
+ps -ef   # processes for users in long formating
+# kill commands to set signals  (signals used to determin the priority for process) 
+kill -14 1234    # -14 is the number of signal    , 1234 is the process id 
+###########
+wc -l grep.txt
+#####
+cut -c1,2 grep.txt    # (for each line)   get maching char from file with speslfic options 
+cut -c20-50  grep.txt            # with rang option  
+grep "abo" grep.txt | cut -d : -f2 
+#######################################
+nano f1.txt  
+# 
+hi 
+hello
+nano f2.txt
+#
+1
+2
+3
+###
+# past commands is the opesite of cut commands macke  merge lines of files
+past f1.txt f2.txt
+##############
+wc -w sort.txt   # -w number of words
+wc -c sort.txt   # -c number of char 
+######
+# find formate ->  find path      # find command mack search for the spesific path recursevly 
+find . -name "grep.txt" -print    # find in curent path recursevly
+find . -name *.txt -print 
+#####
+tr    # replace commands mack delete with -d 
+cut -d: -f1,6 /etc/passwd | tr : ' '    # 1,6 filed 1 + filed 6
+#################################
+date | tr ' ' ' \12'   # \12 is the \n
+########
+nano tr.txt
+#
+my   name is moh sal    i am        study in 
+   BZU 
+####
+tr -s ' ' ' ' < tr.txt   
+tr -d ' ' < tr.txt 
+# tr tacks file as a input  (not just file name as grep commands)
+##########################
+task
+ls -l | tr -s ' ' |cut -d' ' -f7
+##################################################################
+################### lab3 regex ##################
+# useful in search 
+#caret  ^
+grep ^root /etc/passwd
+##################
+nano exp.txt
+####
+he Unix operating system was pioneered
+hi
+
+by
+Ken
+
+hiahmad
+Thompson and Dennis
+Ritchie at Bell
+Laboratories in the late 1960s. Onee
+of the primary
+12hi
+hello123moh
+1234hi
+12345
+hi123456hi
+MOHSAL
+moh
+.himoh
+hellomoh
+a
+hellomoh.
+mohsalababababababsalemababababababhimanababababababsalemababababab
+salhioksalretsal
+The hi
+   -7hi
+   @8moh
+moh The
+the he
+The moh
+himoh7889634485hi
+hi ttttmohsal
+abcdeabcdeabcdeabcde
+abcdeabcdeabcdeabc
+abcdeabcdeabcdeabcd
+hello tttttttsalem
+123hi
+moh sal 456 hi moh
+goals in the design of the Unix system was to create an environment that
+promoted efficient program
+development.
+ahmad
+[moh salem]
+.Hi man
+HHi man
+my mamamamamama my
+mohammadm
+###########################################
+grep '\<a...d\>' exp.txt
+grep ^a exp.txt
+grep l$ exp.txt   # words end of l  
+grep y$ exp.txt 
+grep ^R exp.txt 
+########
+grep .$ exp.txt
+grep '\.$' exp.txt
+grep ’^\.’ exp.txt
+grep ^$ exp.txt   # mach no char
+####
+grep '\<The\>' exp.txt         #  '\< \>'    means return words (means contans)
+grep '\<[Tt]he\>' exp.txt
+grep '[0-9]' exp.txt
+grep '[A-Z]' exp.txt
+grep '[A-Za-z]' exp.txt
+grep '^[A-Z]' exp.txt
+grep '[^A-Za-z]' exp.txt
+grep '^[^A-Za-z]' exp.txt
+grep '^[^A-Za-z0-9]' exp.txt
+##################
+#Q:return lines of words starts of capetal latters ?
+grep '^\<[A-Z].*\>' exp.txt 
+#####################################
+grep '\<[aA]....\>' *.txt  # word of 5 char begin at A or a
+grep '[t*]' exp.txt   # Matching a Choice of Characters (zero or more char after mach t)
+grep '[A-Za-z][A-Za-z]*' exp.txt
+grep '[0-9]' exp.txt
+grep '[0-9][0-9]' exp.txt        # tacks each 2 numbers as the char with pairs
+##############3
+grep '[0-9]' exp.txt
+grep '[0-9]*' exp.txt
+##
+grep '[-0-9]' exp.txt    # to mach dash
+##
+grep '[@0-9]' exp.txt    # to mach @
+grep '[]0-9]' exp.txt    # to mach ]
+grep '[]@0-9]' exp.txt   # to mach @ ]
+##########################
+### Matching a Precise Number of Characters: \{min,max\}   <-- means with rang ####
+#######
+grep 't\{2,4\}' exp.txt    # mack maching with spesific range from 2 to 4 for spesific char 
+######
+# find the words than large of 12 char and less of 20 char
+grep '[A-Za-z]\{12,20\}' exp.txt
+# find the words than large of 19 char and less of 20 char
+grep '\<[A-Za-z]\{19,20\}\>' exp.txt
+#######################
+# mach in evry lines exactly 11 char
+grep '[A-Za-z]\{11\}' exp.txt
+######
+# mach at max 2 char (it is numbers)
+grep '[0-9]\{2\}'   exp.txt
+grep '[0-9]\{3\}'   exp.txt
+grep '[0-9]\{4\}'   exp.txt
+############
+# mache at max 6 char (from capetals latters)
+grep '[A-Z]\{6\}' exp.txt   # mach at max 6 char   
+##############
+grep '[A-Za-z]\{19,\}' exp.txt   # return with range at minumum 19 char
+###################################
+# get word begin in 4 char ?
+grep '^\<..\>' exp.txt
+grep '^\<....\>' exp.txt
+####################################
+# Saving maching char in register ( 1 to 9 registerd in shell) ###########
+grep '^\(.\)' exp.txt  
+#  جيبلي اول حرف في السطر  وخزنه في ريجيستر رقم 1 
+##
+grep '^\(.\)\1' exp.txt 
+# عوضلي الكاركتر الي جبته من اول سطر وعوضلي اياه ب نفسه بعرض محتوى الرجستر 
+########################
+grep '\(.\)\1' exp.txt  # to get two repeted char in line 
+######
+grep '\(..\)\1' exp.txt  
+# بجيبلي تكرار 2 كاركتر في السطر
+################################
+grep '^.' exp.txt       # get one any char (a begining)
+grep '^\(.\)' exp.txt   # save it in register#1
+grep '^\(.\).* exp.txt         # zero or more char after it 
+grep '^\(.\).*\1$' exp.txt  
+# اعمل ماش موافقة على نفس الحرف المبدوء به والمختوم به ل كاركتر واحد فقط بعد حفظه في ريجيستر رقم واحد
+###########
+grep '^\(..\).*\1$' exp.txt  # begin and end at the same 2 char 
+###
+grep '^\(...\).*\1$' exp.txt   # begin and end at the same 2 char
+########################################################################
+##############################################################################
+# sed is the stream editer for files  , sed tacks commands to mack sed for it   
+# sed format --> sed commands filename
+# sed taks commands or regex --> sed 'regex' filename
+nano sed.txt 
+###
+The Unix operating system was pioneered by Ken
+Thompson and Dennis Ritchie at Bell Laboratories
+in the late 1960s. One of the primary goals in
+the design of the Unix system was to create an
+environment that promoted efficient program
+######
+sed 's/linux/LINUX' sed.txt
+### sed not saved any replacment string to file How can i save it ? mack redirect to file >>
+## or mack intaractive (adit files in place)  -i option
+sed -i 's/linux/LINUX' sed.txt
+sed 's/linux/Linux/g' sed.txt  # global occurrences will be change
+##
+sed -n '1,2p' sed.txt
+sed -n '/UNIX/p' sed.txt
+### delete lines by sed commands ####
+sed '1,2d' sed.txt
+sed '/UNIX/d' sed.txt
+############################# sed powerful ###############
+nano pwerfulofsed.txt
+#
+
+
+###
+sed '5d' pwerfulofsed.txt                # Delete line 5
+sed '/[Tt]est/d' pwerfulofsed.txt        # Delete all lines containing Test or test
+sed -n '5,10p'  pwerfulofsed.txt         # Print only lines 5 through 10 from text
+sed '1,10s/unix/UNIX/g' pwerfulofsed.txt # mack sed  regex on wherever it appears in the first 10 lines
+sed 's/...//'   pwerfulofsed.txt         #Delete the first three characters from each line
+sed 's/...$//' pwerfulofsed.txt          #Delete the last 3 characters from each line
+sed -n 'l' pwerfulofsed.txt
+#Print all lines, showing nonprinting char as \nn (where nn is the octal value of the char), and print the \t
+######################################################### 
+# Task:       
+nano lab3task
+####
+hi moh salem how are you today
+i am ok
+cat is betuful cat
+good hi hello ok
+hi Dog is strong Dog is good
+salem hiiii
+saleam mohsal himan mohsal okiamgood hello himan keefhaaallaaak
+himohsalem
+###
+# get line begin at cat and end at cat?
+grep  '\(\<cat\>\).*\1$'    lab3task
+############
+grep  '\(\<Dog\>\).*\1'    lab3task
+##################################
+
+grep    '\(\<.*\>\).*\(\<.*\>\).*\<\1\>.*\<\2\>'   lab3task
+
+
+
+
